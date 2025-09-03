@@ -54,7 +54,7 @@
 				     (if template
 					 (template-id template)
 					 #f))))))))
-    (lambda (info) 
+    (lambda (info)
       (eqv? (if (debug-data? info)
 		(debug-data-uid info)
 		info)
@@ -227,7 +227,7 @@
 	      (display " is " (command-output))
 	      (write value (command-output))))
 	(newline out))))
-	 
+
 (define (unset name)
   (let ((setting (lookup-setting name))
 	(out (command-output)))
@@ -312,7 +312,7 @@
 
 (define (define-toggle-syntax name help)
   (define-command-syntax name #f #f '(&opt name)))
-  
+
 (define (toggle-command name)
   (lambda maybe-value
     (set name (if (null? maybe-value)
@@ -322,7 +322,7 @@
 		      'on)
 		  (car maybe-value)))))
 
-(define-toggle-syntax 'batch 
+(define-toggle-syntax 'batch
   "enable/disable batch mode (no prompt, errors exit)")
 
 (define batch (toggle-command 'batch))
@@ -492,7 +492,7 @@ Kind should be one of: names maps files source tabulate"
 		(cons (list name traced proc env)
 		      (traced-procedures)))
     (environment-define! env name traced))) ;was environment-set!
-	   
+
 ; Should be doing clookup's here -- avoid creating new locations
 
 (define (untrace-1 name)
@@ -675,13 +675,13 @@ Kind should be one of: names maps files source tabulate"
 		   envs))))))
 
 ;; prints the default package of the given file if found
-(define-command-syntax 'show-default-package "<filename>" 
+(define-command-syntax 'show-default-package "<filename>"
   "shows the default package of the given file" '(filename))
 
 (define (show-default-package . name)
   (if (null? name)
       '?
-      (begin 
+      (begin
         (write (get-file-environment (car name)))
         (newline))))
 
@@ -786,7 +786,3 @@ Kind should be one of: names maps files source tabulate"
     (set-command-results!
      (list (schemify (expander exp env)
 		     env)))))
-
-
-
-
