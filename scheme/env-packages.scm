@@ -52,7 +52,7 @@
 (define-structures ((command-levels command-levels-interface)
 		    (command-state command-state-interface))
   (open scheme
-	enumerated enum-case 
+	enumerated enum-case
 	os-strings
 	tables queues
 	session-data
@@ -94,7 +94,7 @@
   (files (env basic-command)))
 
 ; Usual command set
-               
+
 (define-structure usual-commands usual-commands-interface
   (open basic-commands
         build-commands
@@ -277,7 +277,7 @@
         exceptions
 	handle			; ignore-errors
 	conditions		; error?
-	
+
 	; the rest are for looking inside various types of objects
         closures                ; closure-template
         disclosers              ; template-debug-data, etc.
@@ -291,7 +291,7 @@
         locations
 	cells
         weak
-	(subset primitives      (transport-link-cell? 
+	(subset primitives      (transport-link-cell?
 				 transport-link-cell-key
 				 transport-link-cell-value
 				 transport-link-cell-tconc
@@ -307,7 +307,7 @@
 	command-state
 	menus
 	exceptions
-	
+
 	; The following two structures are for ,where
         debug-data
 	disclosers		; template-debug-data
@@ -421,5 +421,3 @@
     (define-syntax lap
       (lambda (e r c)
         (make-node (get-operator 'lap syntax-type) e)))))
-
-
